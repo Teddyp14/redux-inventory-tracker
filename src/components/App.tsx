@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import inventoryList from '../InventoryList';
-import Header from './Header'
-import './App.css'
+import Header from './Header';
+import Catalog from './Catalog';
 
 interface ItemData {
   title: string,
@@ -14,9 +14,14 @@ interface ItemData {
 const App: React.FC = () => {
 
   const [inventory, setInventory] = useState<ItemData[]>(inventoryList)
+  const [cartList, setCartList] = useState<ItemData[]>()
+
   return (
     <>
       <Header />
+      <Catalog
+        inventoryList={inventoryList} />
+
     </>
   )
 }
