@@ -17,7 +17,11 @@ const ItemForm = (props: ItemForm) => {
             <form onSubmit={(e) => {
                 e.preventDefault();
                 const id = v4()
-                props.handleFormSubmission({ ...form, id })
+                if (props.isNewItem === true) {
+                    props.handleFormSubmission({ ...form, id })
+                } else {
+                    props.handleFormSubmission(form)
+                }
 
             }}>
                 <label>Title
@@ -82,11 +86,13 @@ const ItemForm = (props: ItemForm) => {
 }
 
 ItemForm.propTypes = {
-    handleFormSubmission: PropTypes.func
+    handleFormSubmission: PropTypes.func,
+    isNewItem: PropTypes.bool
 }
 
 interface ItemForm {
     handleFormSubmission: (arg1: ItemData) => void
+    isNewItem: boolean
 }
 
 export default ItemForm;
