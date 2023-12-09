@@ -7,6 +7,7 @@ const inventoryList: ItemData[] = [{
     image: "./img/wavestorm.webp",
     description: "An 8' soft-top perfect for summer waves!",
     price: 150,
+    quantity: 10,
     id: v4()
 },
 {
@@ -14,6 +15,7 @@ const inventoryList: ItemData[] = [{
     image: "./img/wetsuit.webp",
     description: "A wetsuit with a built in hood, made for the North Pacific.",
     price: 220,
+    quantity: 20,
     id: v4()
 },
 {
@@ -21,6 +23,7 @@ const inventoryList: ItemData[] = [{
     image: "./img/thermos.webp",
     description: "Have some hot soup after a cold session!",
     price: 30,
+    quantity: 50,
     id: v4()
 }
 ]

@@ -4,6 +4,7 @@ import inventoryList from '../InventoryList';
 import Header from './Header';
 import Catalog from './Catalog';
 import ItemSpecifics from "./ItemSpecifics";
+import ItemForm from './ItemForm';
 
 const App: React.FC = () => {
 
@@ -17,18 +18,35 @@ const App: React.FC = () => {
     setSelectedItem(id)
   }
 
+  const addNewItem = (formData: ItemData) => {
+    console.log(formData)
+    setInventory(inventory => [...inventory, formData])
+    console.log(inventory)
+    setPageView(0)
+  }
+
   let currentView;
 
   if (pageView === 0) {
     currentView =
-      <Catalog
-        inventoryList={inventoryList}
-        changePageFunction={displayItemSpecifics} />
+      <>
+        <Catalog
+          inventoryList={inventory}
+          changePageFunction={displayItemSpecifics} />
+        <button onClick={() => setPageView(2)}>Add new item!</button>
+      </>
   }
   else if (pageView === 1) {
     currentView =
       <ItemSpecifics
         item={inventoryList.filter((item) => item.id === selectedItem)[0]} />
+  }
+  else if (pageView === 2) {
+    currentView =
+      <ItemForm
+        handleFormSubmission={addNewItem}
+      />
+
   }
 
   return (

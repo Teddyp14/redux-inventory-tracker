@@ -7,15 +7,16 @@ const Catalog = (props: Catalog) => {
             <div key={item.id} onClick={() => props.changePageFunction(item.id)} >
                 <img src={item.image} alt={item.description} />
                 <h3>{item.title}</h3>
-                <h4>{item.price}</h4>
+                <h4>${item.price}</h4>
+                <h4>{item.quantity} left in stock!</h4>
             </div>
         )
     })
 
     return (
-        <>
+        <div>
             {products}
-        </>
+        </div >
     )
 }
 
