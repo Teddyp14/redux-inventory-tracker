@@ -14,9 +14,9 @@ const App: React.FC = () => {
   const [itemToEdit, setItemToEdit] = useState<ItemData>()
 
   const displayItemSpecifics = (id: string) => {
-    setPageView(1)
     const item = inventory.filter((item) => item.id === id)[0]
     setSelectedItem(item)
+    setPageView(1)
   }
 
   const addNewItem = (formData: ItemData) => {
@@ -26,8 +26,10 @@ const App: React.FC = () => {
 
   const updateItem = (formData: ItemData) => {
     setInventory(inventory => inventory.map(item => (item.id === formData.id ? formData : item)))
-    displayItemSpecifics(formData.id)
+    setSelectedItem(inventory.filter(item => item.id === formData.id)[0])
+    console.log(inventory.filter(item => item === formData)[0])
     setPageView(1)
+    // displayItemSpecifics(formData.id)
   }
 
   const selectItemToEdit = (id: string) => {
@@ -56,11 +58,11 @@ const App: React.FC = () => {
 
       </>
   }
-  else if (pageView === 2 && selectedItem) {
+  else if (pageView === 2) {
     currentView =
       <ItemForm
         handleFormSubmission={addNewItem}
-        selectedItem={selectedItem}
+        selectedItem={inventoryList[0]}
         isNewItem={true}
         buttonText="Add item"
       />
