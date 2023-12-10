@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
   const [pageView, setPageView] = useState<number>(0)
   const [inventory, setInventory] = useState<ItemData[]>(inventoryList)
-  const [selectedItem, setSelectedItem] = useState<ItemData>()
+  const [selectedItem, setSelectedItem] = useState<ItemData>(inventory[0])
   const [itemToEdit, setItemToEdit] = useState<ItemData>()
 
   const displayItemSpecifics = (id: string) => {
@@ -33,7 +33,14 @@ const App: React.FC = () => {
     setSelectedItem(inventory.filter(item => item.id === formData.id)[0])
     console.log(inventory.filter(item => item === formData)[0])
     setPageView(1)
-    // displayItemSpecifics(formData.id)
+  }
+
+  const purchaseItem = (id: string) => {
+    const item = inventory.filter(item => item.id === id)[0]
+    const quantity = item.quantity - 1
+    setSelectedItem({ ...selectedItem, quantity })
+    const newInventory = inventory.map(item => item.id === id ? { ...item, quantity } : item)
+    setInventory(newInventory)
   }
 
   const selectItemToEdit = (id: string) => {
@@ -58,7 +65,8 @@ const App: React.FC = () => {
       <>
         <ItemSpecifics
           item={selectedItem}
-          editItem={selectItemToEdit} />
+          editItem={selectItemToEdit}
+          purchaseItem={purchaseItem} />
 
       </>
   }
