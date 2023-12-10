@@ -29,9 +29,8 @@ const App: React.FC = () => {
   }
 
   const updateItem = (formData: ItemData) => {
-    setInventory(inventory => inventory.map(item => (item.id === formData.id ? formData : item)))
-    setSelectedItem(inventory.filter(item => item.id === formData.id)[0])
-    console.log(inventory.filter(item => item === formData)[0])
+    setInventory(inventory.map(item => (item.id === formData.id ? formData : item)))
+    setSelectedItem(formData)
     setPageView(1)
   }
 
