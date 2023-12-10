@@ -19,6 +19,10 @@ const App: React.FC = () => {
     setPageView(1)
   }
 
+  const backToHome = () => {
+    setPageView(0)
+  }
+
   const addNewItem = (formData: ItemData) => {
     setInventory(oldList => [...oldList, formData])
     setPageView(0)
@@ -79,7 +83,8 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header
+        backToHomeFunction={backToHome} />
       {currentView}
     </>
   )
