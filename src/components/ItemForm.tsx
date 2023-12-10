@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 
 const ItemForm = (props: ItemForm) => {
     const [form, setForm] = useState<ItemData>({
-        title: "",
-        image: "",
-        description: "",
-        price: 0,
-        quantity: 0,
-        id: ""
+        title: props.selectedItem.title,
+        image: props.selectedItem.image,
+        description: props.selectedItem.description,
+        price: props.selectedItem.price,
+        quantity: props.selectedItem.quantity,
+        id: props.selectedItem.id
     })
     return (
         <>
@@ -19,6 +19,7 @@ const ItemForm = (props: ItemForm) => {
                 const id = v4()
                 if (props.isNewItem === true) {
                     props.handleFormSubmission({ ...form, id })
+
                 } else {
                     props.handleFormSubmission(form)
                 }
@@ -79,7 +80,7 @@ const ItemForm = (props: ItemForm) => {
                             })
                         }}></input>
                 </label>
-                <button type="submit">Add item</button>
+                <button type="submit">{props.buttonText}</button>
             </form>
         </>
     )
@@ -87,12 +88,19 @@ const ItemForm = (props: ItemForm) => {
 
 ItemForm.propTypes = {
     handleFormSubmission: PropTypes.func,
-    isNewItem: PropTypes.bool
+    isNewItem: PropTypes.bool,
+    buttonText: PropTypes.string,
+    selectedItem: PropTypes.object
+
+
 }
 
 interface ItemForm {
     handleFormSubmission: (arg1: ItemData) => void
     isNewItem: boolean
+    buttonText: string
+    selectedItem: ItemData
+
 }
 
 export default ItemForm;

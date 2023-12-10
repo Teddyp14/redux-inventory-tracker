@@ -10,21 +10,30 @@ const App: React.FC = () => {
 
   const [pageView, setPageView] = useState<number>(0)
   const [inventory, setInventory] = useState<ItemData[]>(inventoryList)
-  const [cartList, setCartList] = useState<ItemData[]>()
-  const [selectedItem, setSelectedItem] = useState<string>("")
+  const [selectedItem, setSelectedItem] = useState<ItemData>()
+  const [itemToEdit, setItemToEdit] = useState<ItemData>()
 
   const displayItemSpecifics = (id: string) => {
     setPageView(1)
-    setSelectedItem(id)
+    const item = inventory.filter((item) => item.id === id)[0]
+    setSelectedItem(item)
   }
 
   const addNewItem = (formData: ItemData) => {
-    setInventory(inventory => [...inventory, formData])
+    setInventory(oldList => [...oldList, formData])
     setPageView(0)
   }
 
-  const editItem = (formData: ItemData) => {
+  const updateItem = (formData: ItemData) => {
     setInventory(inventory => inventory.map(item => (item.id === formData.id ? formData : item)))
+    displayItemSpecifics(formData.id)
+    setPageView(1)
+  }
+
+  const selectItemToEdit = (id: string) => {
+    const item = inventory.filter(item => item.id === id)[0]
+    setItemToEdit(item)
+    setPageView(3)
   }
 
   let currentView;
@@ -38,26 +47,31 @@ const App: React.FC = () => {
         <button onClick={() => setPageView(2)}>Add new item!</button>
       </>
   }
-  else if (pageView === 1) {
+  else if (pageView === 1 && selectedItem) {
     currentView =
       <>
         <ItemSpecifics
-          item={inventoryList.filter((item) => item.id === selectedItem)[0]} />
-        <button onClick={() => setPageView(2)}>Edit item</button>
+          item={selectedItem}
+          editItem={selectItemToEdit} />
+
       </>
   }
-  else if (pageView === 2) {
+  else if (pageView === 2 && selectedItem) {
     currentView =
       <ItemForm
         handleFormSubmission={addNewItem}
+        selectedItem={selectedItem}
         isNewItem={true}
+        buttonText="Add item"
       />
   }
-  else if (pageView == 3) {
+  else if (pageView == 3 && itemToEdit) {
     currentView =
       <ItemForm
-        handleFormSubmission={editItem}
+        handleFormSubmission={updateItem}
+        selectedItem={itemToEdit}
         isNewItem={false}
+        buttonText="Update item"
       />
   }
 
