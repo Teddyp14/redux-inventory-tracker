@@ -1,14 +1,13 @@
 .specifics-div {
     width: 500px;
     height: 500px;
-    margin: 40px;
+    margin: auto;
 }
 
 .specifics-div img {
     height: 400px;
 }
 
-
-button {
+.specifics-div button {
     margin: 10px;
 }

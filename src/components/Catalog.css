@@ -3,14 +3,23 @@
     flex-wrap: wrap;
     text-align: center;
     padding: 40px;
+    margin: auto;
 }
 
 .itemImage {
     height: 300px;
+    margin: auto;
+    padding: 20px;
 }
 
 .item-frame {
     padding: 20px;
-    margin: 20px;
+    margin: auto;
     width: 300px;
+    align-items: center;
+}
+
+.item-indicator:hover {
+    transform: scale(1.02);
+    cursor: pointer;
 }

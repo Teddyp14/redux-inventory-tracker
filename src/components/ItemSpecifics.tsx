@@ -7,12 +7,14 @@ const ItemSpecifics = (props: ItemSpecifics) => {
         <>
             <div className='specifics-div'>
                 <h2>{props.item.title}</h2>
+                <hr />
                 <img src={props.item.image} alt={props.item.description} />
-                <h4>{props.item.description}</h4>
+                <hr />
+                <h6>{props.item.description}</h6>
                 <h4>${props.item.price}</h4>
                 <h4>{props.item.quantity} left in stock</h4>
-                <button onClick={() => props.editItem(props.item.id)} className="btn btn-success">Edit item</button>
-                <button onClick={() => props.purchaseItem(props.item.id)} className="btn btn-primary">Record a sale</button>
+                <button onClick={() => props.editItem(props.item.id)} className="btn btn-primary">Edit item</button>
+                <button onClick={() => props.purchaseItem(props.item.id)} className="btn btn-success">Record a sale</button>
                 <button onClick={() => props.deleteItem(props.item.id)} className="btn btn-danger">Delete item</button>
             </div>
         </>

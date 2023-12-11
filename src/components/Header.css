@@ -1,12 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Righteous&family=Space+Mono&display=swap');
 
 .header {
+    display: flex;
+    flex-wrap: wrap;
+    height: 200px;
+    background-color: grey;
+}
+
+.header-text {
+    padding: 30px;
+    width: 50%;
+    font-family: 'Righteous';
+    font-size: 60px;
+    color: rgb(37, 87, 37);
+    text-shadow: -1px -1px 0 #fcfbfb, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+.header-text:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.header-filler {
+    width: 25%;
+}
+
+
+
+
+
+
+/* .header {
     font-family: 'Righteous';
     font-size: 80px;
     text-align: center;
-    height: 300px;
+    height: 200px;
     padding: 40px;
     color: rgb(59, 85, 59);
     text-shadow: white;
     background-color: grey;
 }
+
+.header h1 {
+    font-family: 'Righteous';
+    font-size: 80px;
+} */

@@ -4,9 +4,13 @@ import './Header.css'
 const Header = (props: Header) => {
     return (
         <>
-            <h1 onClick={() => props.backToHomeFunction()} className="header">
-                North Pacific Surf
-            </h1>
+            <div className='header'>
+                <div className="header-filler"></div>
+                <h1 onClick={() => props.backToHomeFunction()} className="header-text">
+                    <em>North Pacific Surf</em>
+                </h1>
+                <div className="header-filler"></div>
+            </div>
         </>
     )
 }
