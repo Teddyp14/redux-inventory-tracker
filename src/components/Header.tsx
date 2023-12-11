@@ -5,11 +5,11 @@ const Header = (props: Header) => {
     return (
         <>
             <div className='header'>
-                <div className="header-filler"></div>
+                <div className="header-filler-1"></div>
                 <h1 onClick={() => props.backToHomeFunction()} className="header-text">
-                    <em>North Pacific Surf</em>
+                    <em>Tillamook Surf Co.</em>
                 </h1>
-                <div className="header-filler"></div>
+                <div className="header-filler-2"></div>
             </div>
         </>
     )

@@ -12,7 +12,7 @@ const ItemSpecifics = (props: ItemSpecifics) => {
                 <hr />
                 <h6>{props.item.description}</h6>
                 <h4>${props.item.price}</h4>
-                <h4>{props.item.quantity} left in stock</h4>
+                <h4>{props.item.quantity > 5 ? <span>{props.item.quantity} available</span> : <span>Only {props.item.quantity} left in stock! </span>}</h4>
                 <button onClick={() => props.editItem(props.item.id)} className="btn btn-primary">Edit item</button>
                 <button onClick={() => props.purchaseItem(props.item.id)} className="btn btn-success">Record a sale</button>
                 <button onClick={() => props.deleteItem(props.item.id)} className="btn btn-danger">Delete item</button>

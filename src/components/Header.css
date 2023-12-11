@@ -21,27 +21,14 @@
     cursor: pointer;
 }
 
-.header-filler {
+.header-filler-1 {
     width: 25%;
+    background-image: url(../img/shortys.jpg);
+    background-size: cover;
 }
 
-
-
-
-
-
-/* .header {
-    font-family: 'Righteous';
-    font-size: 80px;
-    text-align: center;
-    height: 200px;
-    padding: 40px;
-    color: rgb(59, 85, 59);
-    text-shadow: white;
-    background-color: grey;
+.header-filler-2 {
+    width: 25%;
+    background-image: url(../img/seal.jpg);
+    background-size: cover;
 }
-
-.header h1 {
-    font-family: 'Righteous';
-    font-size: 80px;
-} */

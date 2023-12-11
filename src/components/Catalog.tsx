@@ -3,13 +3,14 @@ import { ItemData } from "../ItemDataInterface";
 import './Catalog.css'
 
 const Catalog = (props: Catalog) => {
+
     const products = props.inventoryList.map((item) => {
         return (
             <div key={item.id} onClick={() => props.viewItemFunction(item.id)} className="item-frame item-indicator item-cursor">
                 <img src={item.image} alt={item.description} className="itemImage" />
                 <h3>{item.title}</h3>
                 <h4>${item.price}</h4>
-                <h4>{item.quantity} left in stock!</h4>
+                <h4>{item.quantity >= 5 ? <span>{item.quantity} available</span> : <span>Only {item.quantity} left in stock! </span>}</h4>
             </div>
         )
     })

@@ -102,6 +102,7 @@ const ItemForm = (props: ItemForm) => {
                             type="number"
                             id="quantity"
                             min="0"
+                            max="100"
                             onChange={e => {
                                 setForm({
                                     ...form, quantity: parseInt(e.target.value)
