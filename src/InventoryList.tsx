@@ -1,4 +1,4 @@
-import { ItemData } from './interfaces';
+import { ItemData } from './ItemDataInterface';
 import { v4 } from 'uuid'
 import wavestorm from './img/wavestorm.webp'
 import wetsuit from './img/wetsuit.webp'

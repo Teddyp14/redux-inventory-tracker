@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ItemData } from '../interfaces'
+import { ItemData } from '../ItemDataInterface'
 import inventoryList from '../InventoryList';
 import Header from './Header';
 import Catalog from './Catalog';

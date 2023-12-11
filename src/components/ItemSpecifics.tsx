@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { ItemData } from '../interfaces'
+import { ItemData } from '../ItemDataInterface'
 import './ItemSpecifics.css'
 
 const ItemSpecifics = (props: ItemSpecifics) => {
