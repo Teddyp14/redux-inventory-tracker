@@ -23,7 +23,7 @@ An application that shows the inventory of a finctional surfshop. Users are able
 * Submit a form to add a new item to the inventory
 * "Purchase" an item from the inventory and decrement the quantity by one. 
 
-## Diagram 
+## Component Tree 
 
 * App
   * Header
