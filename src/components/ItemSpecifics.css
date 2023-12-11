@@ -1,0 +1,9 @@
+.specifics-div {
+    width: 500px;
+    height: 500px;
+    margin: 40px;
+}
+
+.specifics-div img {
+    height: 400px;
+}

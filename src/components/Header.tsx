@@ -1,9 +1,10 @@
 import PropTypes from "prop-types"
+import './Header.css'
 
 const Header = (props: Header) => {
     return (
         <>
-            <h1 onClick={() => props.backToHomeFunction()}>
+            <h1 onClick={() => props.backToHomeFunction()} className="header">
                 North Pacific Surf
             </h1>
         </>

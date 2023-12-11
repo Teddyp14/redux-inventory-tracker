@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ItemData } from "../interfaces"
 import { v4 } from 'uuid'
 import PropTypes from 'prop-types'
+import './ItemForm.css'
 
 const ItemForm = (props: ItemForm) => {
     const [form, setForm] = useState<ItemData>({
@@ -25,62 +26,90 @@ const ItemForm = (props: ItemForm) => {
                 }
 
             }}>
-                <label>Title
-                    <input
-                        type="text"
-                        id="title"
-                        onChange={e => {
-                            setForm({
-                                ...form, title: e.target.value
-                            })
-                        }}
-                    ></input>
-                </label>
-                <label>Image URL
-                    <input
-                        type="text"
-                        id="image"
-                        onChange={e => {
-                            setForm({
-                                ...form, image: e.target.value
-                            })
-                        }}></input>
-                </label>
-                <label>Description
-                    <input
-                        type="text"
-                        id="description"
-                        onChange={e => {
-                            setForm({
-                                ...form, description: e.target.value
-                            })
-                        }}>
-                    </input>
-                </label>
-                <label>Price
-                    <input
-                        type="number"
-                        id="price"
-                        min="0"
-                        step="0.01"
-                        onChange={e => {
-                            setForm({
-                                ...form, price: parseInt(e.target.value)
-                            })
-                        }}></input>
-                </label>
-                <label>Quantity
-                    <input
-                        type="number"
-                        id="quantity"
-                        min="0"
-                        onChange={e => {
-                            setForm({
-                                ...form, quantity: parseInt(e.target.value)
-                            })
-                        }}></input>
-                </label>
-                <button type="submit">{props.buttonText}</button>
+                <div className="row mb-3">
+                    <label
+                        className="col-sm-2 col-form-label"
+                    >Title</label>
+                    <div className="col-sm-10">
+                        <input
+                            className="form-control"
+                            type="text"
+                            id="title"
+                            onChange={e => {
+                                setForm({
+                                    ...form, title: e.target.value
+                                })
+                            }}></input>
+                    </div>
+                </div>
+                <div className="row mb-3">
+                    <label
+                        className="col-sm-2 col-form-label"
+                    >Image URL</label>
+                    <div className="col-sm-10">
+                        <input
+                            className="form-control"
+                            type="text"
+                            id="image"
+                            onChange={e => {
+                                setForm({
+                                    ...form, image: e.target.value
+                                })
+                            }}></input>
+                    </div>
+                </div>
+                <div className="row mb-3">
+                    <label
+                        className="col-sm-2 col-form-label"
+                    >Description</label>
+                    <div className="col-sm-10">
+                        <input
+                            className="form-control"
+                            type="text"
+                            id="description"
+                            onChange={e => {
+                                setForm({
+                                    ...form, description: e.target.value
+                                })
+                            }}></input>
+                    </div>
+                </div>
+                <div className="row mb-3">
+                    <label
+                        className="col-sm-2 col-form-label"
+                    >Price</label>
+                    <div className="col-sm-10">
+                        <input
+                            className="form-control"
+                            type="number"
+                            id="price"
+                            min="0"
+                            step="0.01"
+                            onChange={e => {
+                                setForm({
+                                    ...form, price: parseInt(e.target.value)
+                                })
+                            }}></input>
+                    </div>
+                </div>
+                <div className="row mb-3">
+                    <label
+                        className="col-sm-2 col-form-label"
+                    >Quantity</label>
+                    <div className="col-sm-10">
+                        <input
+                            className="form-control"
+                            type="number"
+                            id="quantity"
+                            min="0"
+                            onChange={e => {
+                                setForm({
+                                    ...form, quantity: parseInt(e.target.value)
+                                })
+                            }}></input>
+                    </div>
+                </div>
+                <button type="submit" className="btn btn-success">{props.buttonText}</button>
             </form>
         </>
     )

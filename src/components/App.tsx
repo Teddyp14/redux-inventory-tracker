@@ -5,6 +5,7 @@ import Header from './Header';
 import Catalog from './Catalog';
 import ItemSpecifics from "./ItemSpecifics";
 import ItemForm from './ItemForm';
+import './App.css'
 
 const App: React.FC = () => {
 
@@ -17,6 +18,10 @@ const App: React.FC = () => {
     const item = inventory.filter((item) => item.id === id)[0]
     setSelectedItem(item)
     setPageView(1)
+  }
+
+  const changePage = (page: number) => {
+    setPageView(page)
   }
 
   const backToHome = () => {
@@ -58,8 +63,8 @@ const App: React.FC = () => {
       <>
         <Catalog
           inventoryList={inventory}
-          changePageFunction={displayItemSpecifics} />
-        <button onClick={() => setPageView(2)}>Add new item!</button>
+          viewItemFunction={displayItemSpecifics}
+          pageChange={changePage} />
       </>
   }
   else if (pageView === 1 && selectedItem) {
