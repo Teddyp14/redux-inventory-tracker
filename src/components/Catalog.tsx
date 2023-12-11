@@ -10,7 +10,7 @@ const Catalog = (props: Catalog) => {
                 <img src={item.image} alt={item.description} className="itemImage" />
                 <h3>{item.title}</h3>
                 <h4>${item.price}</h4>
-                <h4>{item.quantity >= 5 ? <span>{item.quantity} available</span> : <span>Only {item.quantity} left in stock! </span>}</h4>
+                <h4>{item.quantity >= 5 ? <span>{item.quantity} available</span> : <span className="low-stock">{item.quantity} left in stock! </span>}</h4>
             </div>
         )
     })

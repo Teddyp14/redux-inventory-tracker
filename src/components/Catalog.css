@@ -23,3 +23,7 @@
     transform: scale(1.02);
     cursor: pointer;
 }
+
+.low-stock {
+    color: red;
+}

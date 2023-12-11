@@ -11,3 +11,7 @@
 .specifics-div button {
     margin: 10px;
 }
+
+.low-stock {
+    color: red;
+}
