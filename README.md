@@ -21,7 +21,8 @@ An application that shows the inventory of a finctional surfshop. Users are able
 * View all products being offered
 * View the details of each item by clicking on the item
 * Submit a form to add a new item to the inventory
-* "Purchase" an item from the inventory and decrement the quantity by one. 
+* Record a sale of an item from the inventory and decrement the quantity by one. 
+* Delete an item from the inventory
 
 ## Component Tree 
 

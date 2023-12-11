@@ -56,6 +56,11 @@ const App: React.FC = () => {
     setPageView(3)
   }
 
+  const deleteItem = (id: string) => {
+    setInventory(inventory.filter(item => item.id !== id))
+    setPageView(0)
+  }
+
   let currentView;
 
   if (pageView === 0) {
@@ -73,7 +78,8 @@ const App: React.FC = () => {
         <ItemSpecifics
           item={selectedItem}
           editItem={selectItemToEdit}
-          purchaseItem={purchaseItem} />
+          purchaseItem={purchaseItem}
+          deleteItem={deleteItem} />
 
       </>
   }
