@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ItemData } from "../ItemDataInterface"
+import { ItemData } from "../types"
 import { v4 } from 'uuid'
 import PropTypes from 'prop-types'
 import './ItemForm.css'

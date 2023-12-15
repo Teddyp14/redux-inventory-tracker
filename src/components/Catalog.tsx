@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ItemData } from "../ItemDataInterface";
+import { ItemData } from "../types";
 import './Catalog.css'
 
 const Catalog = (props: Catalog) => {
