@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { ItemData } from '../types'
+import type { RootState } from '../redux/store';
+import { useSelector, useDispatch } from 'react-redux'
+import { addItem, selectItem } from '../redux/inventorySlice'
+import type { ItemData } from '../types'
 import inventoryList from '../InventoryList';
 import Header from './Header';
 import Catalog from './Catalog';
@@ -9,8 +12,11 @@ import './App.css'
 
 const App: React.FC = () => {
 
+  const inventory = useSelector((state: RootState) => state.inventory)
+  const dispatch = useDispatch()
+
   const [pageView, setPageView] = useState<number>(0)
-  const [inventory, setInventory] = useState<ItemData[]>(inventoryList)
+  // const [inventory, setInventory] = useState<ItemData[]>(inventoryList)
   const [selectedItem, setSelectedItem] = useState<ItemData>(inventory[0])
   const [itemToEdit, setItemToEdit] = useState<ItemData>()
 
@@ -29,7 +35,7 @@ const App: React.FC = () => {
   }
 
   const addNewItem = (formData: ItemData) => {
-    setInventory(oldList => [...oldList, formData])
+    dispatch(addItem(formData))
     setPageView(0)
   }
 

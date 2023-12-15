@@ -1,4 +1,4 @@
-import inventoryReducer, { addItem, selectItem } from '../redux/inventorySlice'
+import inventoryReducer, { addItem, selectItem, updateItem } from '../redux/inventorySlice'
 import { expect, describe, test } from 'vitest'
 
 describe("inventorySlice", () => {
@@ -12,6 +12,8 @@ describe("inventorySlice", () => {
         id: "1"
     }
 
+    const updatedTestingItem = { ...testingItem, title: "shortboard" }
+
     test("Should add an item to the inventoryList", () => {
         const initialState = {
             inventoryList: [],
@@ -21,13 +23,22 @@ describe("inventorySlice", () => {
         expect(updatedState).toEqual({ inventoryList: [testingItem], selectedItem: {} })
     })
 
-    test("Should set value of selectedItem to a specified object in Inventory list.", () => {
+    test("Should set value of selectedItem to a specified object in inventoryList.", () => {
         const initialState = {
             inventoryList: [testingItem],
             selectedItem: {}
         }
         const updatedState = inventoryReducer(initialState, selectItem("1"))
         expect(updatedState).toEqual({ inventoryList: [testingItem], selectedItem: testingItem })
+    })
+
+    test("Should update an existing item in inventoryList.", () => {
+        const initialState = {
+            inventoryList: [testingItem],
+            selectedItem: {}
+        }
+        const updatedState = inventoryReducer(initialState, updateItem(updatedTestingItem))
+        expect(updatedState).toEqual({ inventoryList: [updatedTestingItem], selectedItem: {} })
     })
 })
 
