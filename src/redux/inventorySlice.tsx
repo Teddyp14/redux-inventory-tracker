@@ -27,13 +27,16 @@ export const inventorySlice = createSlice({
         updateItem: (state, action: PayloadAction<ItemData>) => {
             const formData = action.payload
             state.inventoryList = state.inventoryList.map(item => (item.id === formData.id ? formData : item))
+        },
+        deleteItem: (state, action: PayloadAction<string>) => {
+            state.inventoryList = state.inventoryList.filter(item => item.id !== action.payload)
         }
     }
 })
 
 export default inventorySlice.reducer;
 
-export const { addItem, selectItem, updateItem } = inventorySlice.actions;
+export const { addItem, selectItem, updateItem, deleteItem } = inventorySlice.actions;
 
 export const selectInventory = (state: RootState) => state.inventory
 

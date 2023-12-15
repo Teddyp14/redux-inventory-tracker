@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { RootState } from '../redux/store';
 import { useSelector, useDispatch } from 'react-redux'
-import { addItem, selectItem } from '../redux/inventorySlice'
+import { addItem, selectItem, updateItem, deleteItem } from '../redux/inventorySlice'
 import type { ItemData } from '../types'
 import inventoryList from '../InventoryList';
 import Header from './Header';
@@ -17,12 +17,11 @@ const App: React.FC = () => {
 
   const [pageView, setPageView] = useState<number>(0)
   // const [inventory, setInventory] = useState<ItemData[]>(inventoryList)
-  const [selectedItem, setSelectedItem] = useState<ItemData>(inventory[0])
+  // const [selectedItem, setSelectedItem] = useState<ItemData>(inventory[0])
   const [itemToEdit, setItemToEdit] = useState<ItemData>()
 
   const displayItemSpecifics = (id: string) => {
-    const item = inventory.filter((item) => item.id === id)[0]
-    setSelectedItem(item)
+    dispatch(selectItem(id))
     setPageView(1)
   }
 
@@ -39,9 +38,9 @@ const App: React.FC = () => {
     setPageView(0)
   }
 
-  const updateItem = (formData: ItemData) => {
-    setInventory(inventory.map(item => (item.id === formData.id ? formData : item)))
-    setSelectedItem(formData)
+  const changeItem = (formData: ItemData) => {
+    dispatch(updateItem(formData))
+    dispatch(selectItem(formData.id))
     setPageView(1)
   }
 
@@ -62,8 +61,8 @@ const App: React.FC = () => {
     setPageView(3)
   }
 
-  const deleteItem = (id: string) => {
-    setInventory(inventory.filter(item => item.id !== id))
+  const deleteAnItem = (id: string) => {
+    dispatch(deleteItem(id))
     setPageView(0)
   }
 
@@ -85,7 +84,7 @@ const App: React.FC = () => {
           item={selectedItem}
           editItem={selectItemToEdit}
           purchaseItem={purchaseItem}
-          deleteItem={deleteItem} />
+          deleteItem={deleteAnItem} />
 
       </>
   }
@@ -101,7 +100,7 @@ const App: React.FC = () => {
   else if (pageView == 3 && itemToEdit) {
     currentView =
       <ItemForm
-        handleFormSubmission={updateItem}
+        handleFormSubmission={changeItem}
         selectedItem={itemToEdit}
         isNewItem={false}
         buttonText="Update item"

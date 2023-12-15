@@ -1,4 +1,4 @@
-import inventoryReducer, { addItem, selectItem, updateItem } from '../redux/inventorySlice'
+import inventoryReducer, { addItem, selectItem, updateItem, deleteItem } from '../redux/inventorySlice'
 import { expect, describe, test } from 'vitest'
 
 describe("inventorySlice", () => {
@@ -39,6 +39,15 @@ describe("inventorySlice", () => {
         }
         const updatedState = inventoryReducer(initialState, updateItem(updatedTestingItem))
         expect(updatedState).toEqual({ inventoryList: [updatedTestingItem], selectedItem: {} })
+    })
+
+    test("should delete an specified object from inventoryList.", () => {
+        const initialState = {
+            inventoryList: [testingItem],
+            selectedItem: {}
+        }
+        const updatedState = inventoryReducer(initialState, deleteItem("1"))
+        expect(updatedState).toEqual({ inventoryList: [], selectedItem: {} })
     })
 })
 
