@@ -18,15 +18,18 @@ export const inventorySlice = createSlice({
     initialState,
     reducers: {
         addItem: (state, action: PayloadAction<ItemData>) => {
-            const formData = action.payload;
-            state.inventoryList.push(formData)
+            state.inventoryList.push(action.payload)
+        },
+        selectItem: (state, action: PayloadAction<string>) => {
+            state.selectedItem = state.inventoryList.filter((item) => item.id === action.payload)[0]
+
         }
     }
 })
 
 export default inventorySlice.reducer;
 
-export const { addItem } = inventorySlice.actions;
+export const { addItem, selectItem } = inventorySlice.actions;
 
 export const selectInventory = (state: RootState) => state.inventory
 
