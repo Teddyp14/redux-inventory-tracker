@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 import type { ItemData } from '../types'
-import defaultList from '../defaultList'
+import { defaultList } from '../defaultValues'
+
 
 interface InventoryState {
     inventoryList: ItemData[],

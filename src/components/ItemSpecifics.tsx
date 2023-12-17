@@ -1,35 +1,38 @@
 import PropTypes from "prop-types"
-import { ItemData } from '../types'
+import { useSelector } from 'react-redux'
+import { selectInventory } from '../redux/inventorySlice'
 import './ItemSpecifics.css'
 
 const ItemSpecifics = (props: ItemSpecifics) => {
+
+    const item = useSelector(selectInventory).selectedItem
+
+
     return (
         <>
             <div className='specifics-div'>
-                <h2>{props.item.title}</h2>
+                <h2>{item.title}</h2>
                 <hr />
-                <img src={props.item.image} alt={props.item.description} />
+                <img src={item.image} alt={item.description} />
                 <hr />
-                <h6>{props.item.description}</h6>
-                <h4>${props.item.price}</h4>
-                <h4>{props.item.quantity > 5 ? <span>{props.item.quantity} available</span> : <span className="low-stock">{props.item.quantity} left in stock! </span>}</h4>
+                <h6>{item.description}</h6>
+                <h4>${item.price}</h4>
+                <h4>{item.quantity > 5 ? <span>{item.quantity} available</span> : <span className="low-stock">{item.quantity} left in stock! </span>}</h4>
                 <button onClick={() => props.editItem()} className="btn btn-primary">Edit item</button>
                 <button onClick={() => props.purchaseItem()} className="btn btn-success">Record a sale</button>
-                <button onClick={() => props.deleteItem(props.item.id)} className="btn btn-danger">Delete item</button>
+                <button onClick={() => props.deleteItem(item.id)} className="btn btn-danger">Delete item</button>
             </div>
         </>
     )
 }
 
 ItemSpecifics.propTypes = {
-    item: PropTypes.object,
     editItem: PropTypes.func,
     purchaseItem: PropTypes.func,
     deleteItem: PropTypes.func
 }
 
 interface ItemSpecifics {
-    item: ItemData
     editItem: () => void
     purchaseItem: () => void
     deleteItem: (arg1: string) => void

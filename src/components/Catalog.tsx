@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
-import { ItemData } from "../types";
+import { useSelector, useDispatch } from 'react-redux'
+import { selectInventory } from '../redux/inventorySlice'
+import { pageView } from '../defaultValues'
+import { changeView } from '../redux/pageViewSlice'
 import './Catalog.css'
 
 const Catalog = (props: Catalog) => {
 
-    const products = props.inventoryList.map((item) => {
+    const dispatch = useDispatch()
+    const inventory = useSelector(selectInventory)
+
+    const products = inventory.inventoryList.map((item) => {
         return (
             <div key={item.id} onClick={() => props.viewItemFunction(item.id)} className="item-frame item-indicator item-cursor">
                 <img src={item.image} alt={item.description} className="itemImage" />
@@ -21,21 +27,17 @@ const Catalog = (props: Catalog) => {
                 {products}
             </div >
             <hr />
-            <button onClick={() => props.pageChange(2)} className="btn btn-success">Add new item!</button>
+            <button onClick={() => dispatch(changeView(pageView.addItemForm))} className="btn btn-success">Add new item!</button>
         </>
     )
 }
 
 Catalog.propTypes = {
-    inventoryList: PropTypes.array,
     viewItemFunction: PropTypes.func,
-    pageChange: PropTypes.func
 }
 
 interface Catalog {
-    inventoryList: ItemData[]
     viewItemFunction: (arg1: string) => void
-    pageChange: (arg1: number) => void
 }
 
 export default Catalog;

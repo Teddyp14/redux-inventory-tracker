@@ -1,11 +1,10 @@
-// import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { selectInventory } from '../redux/inventorySlice'
 import { selectPageView } from '../redux/pageViewSlice'
 import { addItem, selectItem, updateItem, deleteItem, purchaseItem, updateInventory } from '../redux/inventorySlice'
 import { changeView } from '../redux/pageViewSlice'
 import type { ItemData } from '../types'
-import inventoryList from '../defaultList';
+import { pageView } from '../defaultValues';
 import Header from './Header';
 import Catalog from './Catalog';
 import ItemSpecifics from "./ItemSpecifics";
@@ -18,14 +17,12 @@ const App: React.FC = () => {
   const page = useSelector(selectPageView)
   const dispatch = useDispatch()
 
-  const pageView = {
-    home: 0,
-    itemSpecifics: 1,
-    addItemForm: 2,
-    updateItemForm: 3
-  }
-
-  // const [pageView, setPageView] = useState<number>(0)
+  // const pageView = {
+  //   home: 0,
+  //   itemSpecifics: 1,
+  //   addItemForm: 2,
+  //   updateItemForm: 3
+  // }
 
   const displayItemSpecifics = (id: string) => {
     dispatch(selectItem(id))
@@ -33,7 +30,7 @@ const App: React.FC = () => {
   }
 
   const changePage = (page: number) => {
-    changeView(page)
+    dispatch(changeView(page))
   }
 
   const backToHome = () => {
@@ -71,32 +68,29 @@ const App: React.FC = () => {
     currentView =
       <>
         <Catalog
-          inventoryList={inventory.inventoryList}
-          viewItemFunction={displayItemSpecifics}
-          pageChange={changePage} />
+          viewItemFunction={displayItemSpecifics} />
       </>
   }
-  else if (page.view === 1 && inventory.selectedItem) {
+  else if (page.view === pageView.itemSpecifics && inventory.selectedItem) {
     currentView =
       <>
         <ItemSpecifics
-          item={inventory.selectedItem}
           editItem={editPage}
           purchaseItem={recordSale}
           deleteItem={deleteAnItem} />
 
       </>
   }
-  else if (page.view === 2) {
+  else if (page.view === pageView.addItemForm) {
     currentView =
       <ItemForm
         handleFormSubmission={addNewItem}
-        selectedItem={inventoryList[0]}
+        selectedItem={inventory.inventoryList[0]}
         isNewItem={true}
         buttonText="Add item"
       />
   }
-  else if (page.view == 3) {
+  else if (page.view == pageView.updateItemForm) {
     currentView =
       <ItemForm
         handleFormSubmission={changeItem}

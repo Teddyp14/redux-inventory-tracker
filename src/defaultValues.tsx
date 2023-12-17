@@ -4,7 +4,7 @@ import wavestorm from './img/wavestorm.webp'
 import wetsuit from './img/wetsuit.webp'
 import thermos from './img/thermos.webp'
 
-const defaultList: ItemData[] = [{
+export const defaultList: ItemData[] = [{
     title: "Wavestorm longboard",
     image: wavestorm,
     description: "An 8' soft-top perfect for summer waves!",
@@ -30,4 +30,9 @@ const defaultList: ItemData[] = [{
 }
 ]
 
-export default defaultList;
+export const pageView = {
+    home: 0,
+    itemSpecifics: 1,
+    addItemForm: 2,
+    updateItemForm: 3
+}
