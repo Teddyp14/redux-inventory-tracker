@@ -33,17 +33,20 @@ export const inventorySlice = createSlice({
             state.inventoryList = state.inventoryList.filter(item => item.id !== action.payload)
         },
         purchaseItem: (state) => {
-            // const quantity = state.selectedItem.quantity - 1
             if (state.selectedItem.quantity > 0) {
                 state.selectedItem.quantity -= 1
+                // const newInventory = inventory.map(item => item.id === id ? { ...item, quantity } : item)
             }
+        },
+        updateInventory: (state) => {
+            state.inventoryList = state.inventoryList.map(item => item.id === state.selectedItem.id ? state.selectedItem : item)
         }
     }
 })
 
 export default inventorySlice.reducer;
 
-export const { addItem, selectItem, updateItem, deleteItem, purchaseItem } = inventorySlice.actions;
+export const { addItem, selectItem, updateItem, deleteItem, purchaseItem, updateInventory } = inventorySlice.actions;
 
 export const selectInventory = (state: RootState) => state.inventory
 
