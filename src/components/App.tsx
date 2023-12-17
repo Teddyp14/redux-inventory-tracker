@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { selectInventory } from '../redux/inventorySlice'
 import { selectPageView } from '../redux/pageViewSlice'
-import { addItem, selectItem, updateItem, deleteItem, purchaseItem, updateInventory } from '../redux/inventorySlice'
+import { selectInventory, addItem, selectItem, updateItem, deleteItem, purchaseItem, updateInventory } from '../redux/inventorySlice'
 import { changeView } from '../redux/pageViewSlice'
 import type { ItemData } from '../types'
 import { pageView } from '../defaultValues';
@@ -17,20 +16,9 @@ const App: React.FC = () => {
   const page = useSelector(selectPageView)
   const dispatch = useDispatch()
 
-  // const pageView = {
-  //   home: 0,
-  //   itemSpecifics: 1,
-  //   addItemForm: 2,
-  //   updateItemForm: 3
-  // }
-
   const displayItemSpecifics = (id: string) => {
     dispatch(selectItem(id))
     dispatch(changeView(pageView.itemSpecifics))
-  }
-
-  const changePage = (page: number) => {
-    dispatch(changeView(page))
   }
 
   const backToHome = () => {
@@ -53,10 +41,6 @@ const App: React.FC = () => {
     dispatch(updateInventory())
   }
 
-  const editPage = () => {
-    dispatch(changeView(pageView.updateItemForm))
-  }
-
   const deleteAnItem = (id: string) => {
     dispatch(deleteItem(id))
     dispatch(changeView(pageView.home))
@@ -75,7 +59,6 @@ const App: React.FC = () => {
     currentView =
       <>
         <ItemSpecifics
-          editItem={editPage}
           purchaseItem={recordSale}
           deleteItem={deleteAnItem} />
 
@@ -85,7 +68,6 @@ const App: React.FC = () => {
     currentView =
       <ItemForm
         handleFormSubmission={addNewItem}
-        selectedItem={inventory.inventoryList[0]}
         isNewItem={true}
         buttonText="Add item"
       />
@@ -94,7 +76,6 @@ const App: React.FC = () => {
     currentView =
       <ItemForm
         handleFormSubmission={changeItem}
-        selectedItem={inventory.selectedItem}
         isNewItem={false}
         buttonText="Update item"
       />
@@ -102,8 +83,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Header
-        backToHomeFunction={backToHome} />
+      <Header />
       {currentView}
     </>
   )

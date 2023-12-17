@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { ItemData } from "../types"
 import { v4 } from 'uuid'
+import { useSelector } from 'react-redux'
+import { selectInventory } from '../redux/inventorySlice'
 import PropTypes from 'prop-types'
 import './ItemForm.css'
 
 const ItemForm = (props: ItemForm) => {
+    const item = useSelector(selectInventory).selectedItem
+
     const [form, setForm] = useState<ItemData>({
-        title: props.selectedItem.title,
-        image: props.selectedItem.image,
-        description: props.selectedItem.description,
-        price: props.selectedItem.price,
-        quantity: props.selectedItem.quantity,
-        id: props.selectedItem.id
+        title: item.title,
+        image: item.image,
+        description: item.description,
+        price: item.price,
+        quantity: item.quantity,
+        id: item.id
     })
     return (
         <>
@@ -120,7 +124,6 @@ ItemForm.propTypes = {
     handleFormSubmission: PropTypes.func,
     isNewItem: PropTypes.bool,
     buttonText: PropTypes.string,
-    selectedItem: PropTypes.object
 
 
 }
@@ -129,7 +132,6 @@ interface ItemForm {
     handleFormSubmission: (arg1: ItemData) => void
     isNewItem: boolean
     buttonText: string
-    selectedItem: ItemData
 
 }
 
