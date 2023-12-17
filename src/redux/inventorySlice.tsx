@@ -35,7 +35,6 @@ export const inventorySlice = createSlice({
         purchaseItem: (state) => {
             if (state.selectedItem.quantity > 0) {
                 state.selectedItem.quantity -= 1
-                // const newInventory = inventory.map(item => item.id === id ? { ...item, quantity } : item)
             }
         },
         updateInventory: (state) => {
