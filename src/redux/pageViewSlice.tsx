@@ -3,25 +3,25 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 
 interface pageViewState {
-    page: number
+    view: number
 }
 
 const initialState: pageViewState = {
-    page: 0
+    view: 0
 }
 
 export const pageViewSlice = createSlice({
-    name: 'page',
+    name: 'pageView',
     initialState,
     reducers: {
-        changePage: (state, action: PayloadAction<number>) => {
-            state.page = action.payload
+        changeView: (state, action: PayloadAction<number>) => {
+            state.view = action.payload
         }
     }
 })
 
 export default pageViewSlice.reducer;
 
-export const { changePage } = pageViewSlice.actions;
+export const { changeView } = pageViewSlice.actions;
 
-export const selectPageView = (state: RootState) => state.page
+export const selectPageView = (state: RootState) => state.pageView

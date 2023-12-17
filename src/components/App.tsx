@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import type { RootState } from '../redux/store';
+// import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { selectInventory } from '../redux/inventorySlice'
+import { selectPageView } from '../redux/pageViewSlice'
 import { addItem, selectItem, updateItem, deleteItem, purchaseItem, updateInventory } from '../redux/inventorySlice'
+import { changeView } from '../redux/pageViewSlice'
 import type { ItemData } from '../types'
 import inventoryList from '../defaultList';
 import Header from './Header';
@@ -12,58 +14,60 @@ import './App.css'
 
 const App: React.FC = () => {
 
-  const inventory = useSelector((state: RootState) => state.inventory)
+  const inventory = useSelector(selectInventory)
+  const page = useSelector(selectPageView)
   const dispatch = useDispatch()
 
-  const [pageView, setPageView] = useState<number>(0)
-  // const [inventory, setInventory] = useState<ItemData[]>(inventoryList)
-  // const [selectedItem, setSelectedItem] = useState<ItemData>(inventory[0])
-  // const [itemToEdit, setItemToEdit] = useState<ItemData>()
+  const pageView = {
+    home: 0,
+    itemSpecifics: 1,
+    addItemForm: 2,
+    updateItemForm: 3
+  }
+
+  // const [pageView, setPageView] = useState<number>(0)
 
   const displayItemSpecifics = (id: string) => {
     dispatch(selectItem(id))
-    setPageView(1)
+    dispatch(changeView(pageView.itemSpecifics))
   }
 
   const changePage = (page: number) => {
-    setPageView(page)
+    changeView(page)
   }
 
   const backToHome = () => {
-    setPageView(0)
+    dispatch(changeView(pageView.home))
   }
 
   const addNewItem = (formData: ItemData) => {
     dispatch(addItem(formData))
-    setPageView(0)
+    dispatch(changeView(pageView.home))
   }
 
   const changeItem = (formData: ItemData) => {
     dispatch(updateItem(formData))
     dispatch(selectItem(formData.id))
-    setPageView(1)
+    dispatch(changeView(pageView.itemSpecifics))
   }
 
   const recordSale = () => {
-    // dispatch(selectItem(id))
     dispatch(purchaseItem())
     dispatch(updateInventory())
   }
 
   const editPage = () => {
-    // const item = inventory.filter(item => item.id === id)[0]
-    // setItemToEdit(item)
-    setPageView(3)
+    dispatch(changeView(pageView.updateItemForm))
   }
 
   const deleteAnItem = (id: string) => {
     dispatch(deleteItem(id))
-    setPageView(0)
+    dispatch(changeView(pageView.home))
   }
 
   let currentView;
 
-  if (pageView === 0) {
+  if (page.view === pageView.home) {
     currentView =
       <>
         <Catalog
@@ -72,7 +76,7 @@ const App: React.FC = () => {
           pageChange={changePage} />
       </>
   }
-  else if (pageView === 1 && inventory.selectedItem) {
+  else if (page.view === 1 && inventory.selectedItem) {
     currentView =
       <>
         <ItemSpecifics
@@ -83,7 +87,7 @@ const App: React.FC = () => {
 
       </>
   }
-  else if (pageView === 2) {
+  else if (page.view === 2) {
     currentView =
       <ItemForm
         handleFormSubmission={addNewItem}
@@ -92,7 +96,7 @@ const App: React.FC = () => {
         buttonText="Add item"
       />
   }
-  else if (pageView == 3) {
+  else if (page.view == 3) {
     currentView =
       <ItemForm
         handleFormSubmission={changeItem}

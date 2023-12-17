@@ -5,7 +5,7 @@ import pageViewSliceReducer from './pageViewSlice'
 export const store = configureStore({
     reducer: {
         inventory: inventorySliceReducer,
-        page: pageViewSliceReducer
+        pageView: pageViewSliceReducer
 
     }
 })
