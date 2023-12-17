@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useSelector, useDispatch } from 'react-redux'
 import { selectInventory } from '../redux/inventorySlice'
 import { pageView } from '../defaultValues'
@@ -30,10 +29,6 @@ const Catalog = (props: Catalog) => {
             <button onClick={() => dispatch(changeView(pageView.addItemForm))} className="btn btn-success">Add new item!</button>
         </>
     )
-}
-
-Catalog.propTypes = {
-    viewItemFunction: PropTypes.func,
 }
 
 interface Catalog {

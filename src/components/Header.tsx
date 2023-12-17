@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import { useDispatch } from 'react-redux'
 import { changeView } from "../redux/pageViewSlice"
 import { pageView } from "../defaultValues"
@@ -19,10 +18,6 @@ const Header = () => {
             </div>
         </>
     )
-}
-
-Header.propTypes = {
-    backToHomeFunction: PropTypes.func
 }
 
 export default Header

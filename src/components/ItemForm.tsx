@@ -3,7 +3,6 @@ import { ItemData } from "../types"
 import { v4 } from 'uuid'
 import { useSelector } from 'react-redux'
 import { selectInventory } from '../redux/inventorySlice'
-import PropTypes from 'prop-types'
 import './ItemForm.css'
 
 const ItemForm = (props: ItemForm) => {
@@ -118,14 +117,6 @@ const ItemForm = (props: ItemForm) => {
             </form>
         </>
     )
-}
-
-ItemForm.propTypes = {
-    handleFormSubmission: PropTypes.func,
-    isNewItem: PropTypes.bool,
-    buttonText: PropTypes.string,
-
-
 }
 
 interface ItemForm {

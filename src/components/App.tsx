@@ -21,10 +21,6 @@ const App: React.FC = () => {
     dispatch(changeView(pageView.itemSpecifics))
   }
 
-  const backToHome = () => {
-    dispatch(changeView(pageView.home))
-  }
-
   const addNewItem = (formData: ItemData) => {
     dispatch(addItem(formData))
     dispatch(changeView(pageView.home))

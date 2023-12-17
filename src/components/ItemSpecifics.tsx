@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import { useSelector, useDispatch } from 'react-redux'
 import { pageView } from "../defaultValues"
 import { changeView } from "../redux/pageViewSlice"
@@ -27,14 +26,7 @@ const ItemSpecifics = (props: ItemSpecifics) => {
     )
 }
 
-ItemSpecifics.propTypes = {
-    editItem: PropTypes.func,
-    purchaseItem: PropTypes.func,
-    deleteItem: PropTypes.func
-}
-
 interface ItemSpecifics {
-    editItem: () => void
     purchaseItem: () => void
     deleteItem: (arg1: string) => void
 }
