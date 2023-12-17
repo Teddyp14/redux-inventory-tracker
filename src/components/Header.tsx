@@ -4,8 +4,8 @@ import { pageView } from "../defaultValues"
 import './Header.css'
 
 const Header = () => {
-    const dispatch = useDispatch()
 
+    const dispatch = useDispatch()
 
     return (
         <>

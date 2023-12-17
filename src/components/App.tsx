@@ -10,7 +10,7 @@ import ItemSpecifics from "./ItemSpecifics";
 import ItemForm from './ItemForm';
 import './App.css'
 
-const App: React.FC = () => {
+const App = () => {
 
   const inventory = useSelector(selectInventory)
   const page = useSelector(selectPageView)
@@ -57,7 +57,6 @@ const App: React.FC = () => {
         <ItemSpecifics
           purchaseItem={recordSale}
           deleteItem={deleteAnItem} />
-
       </>
   }
   else if (page.view === pageView.addItemForm) {

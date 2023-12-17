@@ -6,6 +6,7 @@ import { selectInventory } from '../redux/inventorySlice'
 import './ItemForm.css'
 
 const ItemForm = (props: ItemForm) => {
+
     const item = useSelector(selectInventory).selectedItem
 
     const [form, setForm] = useState<ItemData>({
@@ -16,6 +17,7 @@ const ItemForm = (props: ItemForm) => {
         quantity: item.quantity,
         id: item.id
     })
+
     return (
         <>
             <form onSubmit={(e) => {

@@ -5,6 +5,7 @@ import { selectInventory } from '../redux/inventorySlice'
 import './ItemSpecifics.css'
 
 const ItemSpecifics = (props: ItemSpecifics) => {
+
     const dispatch = useDispatch()
     const item = useSelector(selectInventory).selectedItem
 
