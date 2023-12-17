@@ -13,7 +13,7 @@ const ItemSpecifics = (props: ItemSpecifics) => {
                 <h6>{props.item.description}</h6>
                 <h4>${props.item.price}</h4>
                 <h4>{props.item.quantity > 5 ? <span>{props.item.quantity} available</span> : <span className="low-stock">{props.item.quantity} left in stock! </span>}</h4>
-                <button onClick={() => props.editItem(props.item)} className="btn btn-primary">Edit item</button>
+                <button onClick={() => props.editItem()} className="btn btn-primary">Edit item</button>
                 <button onClick={() => props.purchaseItem()} className="btn btn-success">Record a sale</button>
                 <button onClick={() => props.deleteItem(props.item.id)} className="btn btn-danger">Delete item</button>
             </div>
@@ -30,7 +30,7 @@ ItemSpecifics.propTypes = {
 
 interface ItemSpecifics {
     item: ItemData
-    editItem: (arg1: ItemData) => void
+    editItem: () => void
     purchaseItem: () => void
     deleteItem: (arg1: string) => void
 }

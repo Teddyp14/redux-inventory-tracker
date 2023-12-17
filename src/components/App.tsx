@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { RootState } from '../redux/store';
 import { useSelector, useDispatch } from 'react-redux'
-import { addItem, selectItem, updateItem, deleteItem, purchaseItem } from '../redux/inventorySlice'
+import { addItem, selectItem, updateItem, deleteItem, purchaseItem, updateInventory } from '../redux/inventorySlice'
 import type { ItemData } from '../types'
 import inventoryList from '../defaultList';
 import Header from './Header';
@@ -47,21 +47,14 @@ const App: React.FC = () => {
   const recordSale = () => {
     // dispatch(selectItem(id))
     dispatch(purchaseItem())
-
-    // const item = inventory.inventoryList.filter(item => item.id === id)[0]
-    // if (item.quantity > 0) {
-    //   const quantity = item.quantity - 1
-    //   setSelectedItem({ ...selectedItem, quantity })
-    //   const newInventory = inventory.map(item => item.id === id ? { ...item, quantity } : item)
-    //   setInventory(newInventory)
-    // }
+    dispatch(updateInventory())
   }
 
-  // const selectItemToEdit = (id: string) => {
-  //   const item = inventory.filter(item => item.id === id)[0]
-  //   setItemToEdit(item)
-  //   setPageView(3)
-  // }
+  const editPage = () => {
+    // const item = inventory.filter(item => item.id === id)[0]
+    // setItemToEdit(item)
+    setPageView(3)
+  }
 
   const deleteAnItem = (id: string) => {
     dispatch(deleteItem(id))
@@ -84,7 +77,7 @@ const App: React.FC = () => {
       <>
         <ItemSpecifics
           item={inventory.selectedItem}
-          editItem={changeItem}
+          editItem={editPage}
           purchaseItem={recordSale}
           deleteItem={deleteAnItem} />
 
