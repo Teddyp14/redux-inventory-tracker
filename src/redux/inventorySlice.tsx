@@ -2,15 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 import type { ItemData } from '../types'
+import defaultList from '../defaultList'
 
 interface InventoryState {
     inventoryList: ItemData[],
-    selectedItem: object
+    selectedItem: ItemData
 }
 
 const initialState: InventoryState = {
-    inventoryList: [],
-    selectedItem: {}
+    inventoryList: defaultList,
+    selectedItem: defaultList[0]
 }
 
 export const inventorySlice = createSlice({
@@ -30,13 +31,19 @@ export const inventorySlice = createSlice({
         },
         deleteItem: (state, action: PayloadAction<string>) => {
             state.inventoryList = state.inventoryList.filter(item => item.id !== action.payload)
+        },
+        purchaseItem: (state) => {
+            // const quantity = state.selectedItem.quantity - 1
+            if (state.selectedItem.quantity > 0) {
+                state.selectedItem.quantity -= 1
+            }
         }
     }
 })
 
 export default inventorySlice.reducer;
 
-export const { addItem, selectItem, updateItem, deleteItem } = inventorySlice.actions;
+export const { addItem, selectItem, updateItem, deleteItem, purchaseItem } = inventorySlice.actions;
 
 export const selectInventory = (state: RootState) => state.inventory
 

@@ -4,7 +4,7 @@ import wavestorm from './img/wavestorm.webp'
 import wetsuit from './img/wetsuit.webp'
 import thermos from './img/thermos.webp'
 
-const inventoryList: ItemData[] = [{
+const defaultList: ItemData[] = [{
     title: "Wavestorm longboard",
     image: wavestorm,
     description: "An 8' soft-top perfect for summer waves!",
@@ -30,4 +30,4 @@ const inventoryList: ItemData[] = [{
 }
 ]
 
-export default inventoryList;
+export default defaultList;
