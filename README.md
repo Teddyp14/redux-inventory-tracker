@@ -1,6 +1,6 @@
 # Surf Shop Inventory Tracker
 
-####  An application in React and TypeScript that tracks inventory for a local fictinoal surf shop
+####  An application in React and TypeScript that tracks inventory for a fictional surf shop
 
 #### By Teddy Peterschmidt
 
@@ -26,15 +26,9 @@ An application that shows the inventory of a finctional surfshop. Users are able
 * Record a sale of an item from the inventory and decrement the quantity by one. 
 * Delete an item from the inventory
 
-## Component Tree 
+## Component Diagram
 
-* App
-  * Header
-  * Catalog
-  * ItemSpecifics
-  * ItemForm
-
-![Component Diagram](image.png)
+![Component Diagram](planning/comp-diagram.png)
 
 ## Setup/Installation Requirements
 
