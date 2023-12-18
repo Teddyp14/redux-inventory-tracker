@@ -8,7 +8,9 @@
 
 * TypeScript
 * React
+* Redux Toolkit
 * Vite
+* Vitest
 * CSS
 * Bootstrap
 * JSON
@@ -28,9 +30,11 @@ An application that shows the inventory of a finctional surfshop. Users are able
 
 * App
   * Header
-  *  Catalog
-  *  ItemSpecifics
-  *  ItemForm
+  * Catalog
+  * ItemSpecifics
+  * ItemForm
+
+![Component Diagram](image.png)
 
 ## Setup/Installation Requirements
 
