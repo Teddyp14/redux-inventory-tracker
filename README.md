@@ -28,7 +28,7 @@ An application that shows the inventory of a finctional surfshop. Users are able
 
 ## Component Diagram
 
-![Component Diagram](planning/comp-diagram.png)
+![Component diagram](planning/comp-diagram.png)
 
 ## Setup/Installation Requirements
 
