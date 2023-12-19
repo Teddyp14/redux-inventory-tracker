@@ -39,6 +39,7 @@ An application that shows the inventory of a finctional surfshop. Users are able
 * Start a development server with $ npm run dev
 * Lint TypeScript files in the src folder with $ npm run lint
 * Preview the application with $ npm run preview 
+* Run tests with Vitest with $ npm run preview
 
 ## Known Bugs
 
